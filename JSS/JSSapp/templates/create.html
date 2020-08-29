@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" typy="text/css" href="{% static 'style.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+    <a class="button" href="{% url 'index' %}">
+        메인페이지로
+    </a>
+    <div style="text-align: center;">
+        <h1>자기소개서 작성</h1>
+        <div class="make_jss" style="width: 500px; height: 350px; margin: 0px auto;">
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{jss_form.as_p}}
+                <input class="button submit" style="background-color: rgb(0, 0, 88);" type="submit" value="제출">
+            </form>
+
+            <div class="counted_text">글자수 :</div>
+        </div>
+    </div>
+    <script src="{% static 'count.js' %}"></script>
+</body>
+
+</html>

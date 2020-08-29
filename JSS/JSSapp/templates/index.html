@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" typy="text/css" href="{% static 'style.css' %}">
+    <title>자소설 닷컴</title>
+</head>
+
+<body>
+    <div class="nav">
+        <!-- 자기소개서 필터 -->
+        {% if user.is_authenticated %}
+        <a class="button" href="{% url 'my_index' %}">
+            내 자기소개서만 보기
+        </a>
+
+        <a class="button" href="{% url 'index' %}">
+            모든 자기소개서 보기
+        </a>
+        {% endif %}
+
+        <!-- 로그인 탭 -->
+        {% if user.is_authenticated %}
+        <a class="button" href="{% url 'logout' %}">
+            로그아웃
+        </a>
+
+        &nbsp&nbsp&nbsp💛&nbsp안녕하세요! {{user}}님&nbsp💛
+
+        {% else %}
+        <a class="button" href="{% url 'signup' %}">
+           회원가입
+        </a>
+
+        <a class="button" href="{% url 'login' %}">
+            로그인
+        </a>
+
+        {% endif %}
+    </div>
+
+    <!-- 자기소개서 -->
+        <a href="{% url 'create' %}">
+            <div class="make_jss">
+                <div class="plus_btn">
+                    +
+                </div>
+            </div>
+        </a>
+        <br><div class="detail"></div><br>
+        <div class="jss">
+        {% for jss in all_jss %}
+        <a href="{% url 'detail' jss.id %}">
+            <div class="all_jss">
+                <p>작성자 : {{ jss.author }}</p>
+                <p>{{ jss.title }}</p>
+                <p>{{ jss.updated_at|date:"Y.m.d" }}</p> <!-- 템플릿 필터 -->
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
+    <script src="{% static 'click.js' %}"></script>
+    <script src="{% static 'jss_click.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" typy="text/css" href="{% static 'style.css' %}">
+    <title>자소설 닷컴</title>
+</head>
+
+<body>
+    <a class="button" href="{% url 'index' %}">
+        메인페이지로
+    </a>
+    <div class="make_jss" style="width: 90%; height: 500px; padding: 20px; margin: 30px auto;">
+        <div class="article">
+        <p>제목 : {{my_jss.title}}</p><hr style="border: 0.5px solid black; width: 100%;">
+
+        <br>
+
+        <p>{{my_jss.content}}</p>
+
+        <br>
+
+        <p>💜 {{my_jss.updated_at|date:"Y.m.d"}} 💜</p>
+    </div>
+        <div style="display: inline; ">
+            {% if user == my_jss.author %}
+            <a class="button_reverse" href="{% url 'update' my_jss.id %}">수정</a>
+            <a class="button_reverse" href="{% url 'delete' my_jss.id %}">삭제</a>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+    {% if user.is_authenticated %}
+    <form method="POST" action="{% url 'create_comment' my_jss.id %}">
+        {% csrf_token %}
+        {{comment_form}}
+        <input type="submit" value="댓글작성">
+    </form>
+    {% endif %}
+
+    {% for comment in my_jss.comment_set.all %}
+
+    <p>
+        💛&nbsp&nbsp {{comment.author}}&nbsp&nbsp >> &nbsp&nbsp{{comment.content}}
+        {% if user == comment.author %}
+        <a class="button" href="{% url 'delete_comment' my_jss.id comment.id %}">
+            삭제
+        </a>
+        {% endif %}
+    </p>
+
+    {% endfor %}
+</body>
+
+</html>

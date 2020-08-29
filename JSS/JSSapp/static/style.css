@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.article {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.button {
+    margin: 10px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 2px 2px white;
+    display: inline;
+}
+.button_reverse {
+    margin: 10px;
+    color: rgb(0, 0, 88);
+    border: 1px solid rgb(0, 0, 88);
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 2px 2px rgb(0, 0, 88);
+    display: inline;
+}
+body {
+    font-family: 'NEXON Lv1 Gothic OTF Light';
+    margin: 0px;
+    padding: 50px;
+    background-color: rgb(0, 0, 88);
+    color: white;
+}
+.nav {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid white;
+    margin-bottom: 50px;
+}
+
+.make_jss, .all_jss {
+    width: 200px;
+    height: 300px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-right: 10px;
+    color: rgb(0, 0, 0);
+    background-color: cornsilk;
+    border-radius: 10px;
+    box-shadow: 5px 5px rgb(255, 177, 245);
+}
+
+.all_jss {
+    display: inline-flex;
+}
+
+.plus_btn {
+    color: rgb(0, 0, 0);
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-size: 5rem;
+}
+
+p {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+}
